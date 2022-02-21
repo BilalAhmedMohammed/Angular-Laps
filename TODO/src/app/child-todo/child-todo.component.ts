@@ -9,7 +9,8 @@ export class ChildTodoComponent implements OnInit {
   @Input() dataEntered:any;
   constructor() { }
   del(data:any){
-    this.dataEntered
+    const id = this.dataEntered.indexOf(data);
+    const data3=this.dataEntered.splice(id,1);
   }
   ngOnInit(): void {
   }
