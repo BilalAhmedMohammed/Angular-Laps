@@ -2,9 +2,10 @@
     <div class="row bg-light p-5">
         <h1 class="text-secondary fw-bold text-center">Let's get some work done!</h1>
         <div *ngFor="let data of dataEntered">
-            <span class="bg-secondary text-light fw-bold fs-2 me-3">{{data}}</span>
-            <!-- <input type="button"  class="bg-dark text-light fs-3 me-3"  value="mark"> -->
-            <input type="button" (click)="del(data)" class="bg-dark text-light fs-3"  value="delte">
+            <!-- [style.text-decoration]="change? 'line-through':'under-line';"  -->
+            <span [style.text-decoration]="isMarked?'line-through':'none'" class="bg-light text-dark fw-bold fs-2 me-3">{{data}}</span>
+            <input type="button" (click)="changeStyle()"  class="bg-dark text-light fs-3 me-3"  value="mark">
+            <input type="button" (click)="del(data)" class="bg-dark text-light fs-3"  value="delete">
         </div>
     </div>
 </div>

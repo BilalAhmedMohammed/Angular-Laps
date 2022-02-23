@@ -12,6 +12,10 @@ export class ChildTodoComponent implements OnInit {
     const id = this.dataEntered.indexOf(data);
     const data3=this.dataEntered.splice(id,1);
   }
+  isMarked:boolean=false;
+  changeStyle(){
+    this.isMarked= ! this.isMarked;
+  }
   ngOnInit(): void {
   }
 
