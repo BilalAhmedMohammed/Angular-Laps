@@ -4,6 +4,7 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
+import { ConfirmedValidator } from '../confirmed.validator';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,9 +19,12 @@ export class RegisterComponent implements OnInit {
       emailAddress:['',[
         Validators.required,Validators.pattern('^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$')
       ]],
-      userName:['',[Validators.required,Validators.pattern('^\S*$')]],
+      userName:['',[Validators.required,Validators.pattern('^[^\r\n\t\f\v ]*$')]],
       password:['',[Validators.required,Validators.minLength(8),Validators.pattern('^(?:(?:(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]))|(?:(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]))|(?:(?=.*[0-9])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]))|(?:(?=.*[0-9])(?=.*[a-z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]))).{8,32}$')]],
-      confirmPassword:['',[Validators.required,Validators.minLength(8),Validators.pattern('^(?:(?:(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]))|(?:(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]))|(?:(?=.*[0-9])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]))|(?:(?=.*[0-9])(?=.*[a-z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]))).{8,32}$')]]
+      confirmPassword:['',
+      [Validators.required,Validators.minLength(8),Validators.pattern('^(?:(?:(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]))|(?:(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]))|(?:(?=.*[0-9])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]))|(?:(?=.*[0-9])(?=.*[a-z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]))).{8,32}$')]]
+    },{
+      validator:ConfirmedValidator('password','confirmPassword')
     })
    }
    get formControls() {

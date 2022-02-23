@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="email" class="form-label fw-bold fs-5" >Email</label>
+            <label for="email" class="form-label fw-bold fs-5">Email</label>
             <input type="email" class="form-control" id="email" formControlName="emailAddress" />
             <div class="text-danger" *ngIf="
               loginForm.controls['emailAddress'].touched && !loginForm.controls['emailAddress'].valid
@@ -42,7 +42,7 @@
         </div>
         <div class="mb-3">
             <label for="pass" class="form-label fw-bold fs-5">Password</label>
-            <input #pass type="password" class="form-control" id="pass" formControlName="password">
+            <input type="password" class="form-control" id="pass" formControlName="password">
             <div class="text-danger" *ngIf="
               loginForm.controls['password'].touched && !loginForm.controls['password'].valid
             ">
@@ -59,21 +59,58 @@
         </div>
         <div class="mb-3">
             <label for="confirmPass" class="form-label fw-bold fs-5">Confirm Password</label>
-            <input #conPass type="password" class="form-control" id="confirmPass" formControlName="confirmPassword">
+            <input type="password" class="form-control" id="confirmPass" formControlName="confirmPassword">
             <div class="text-danger" *ngIf="
               loginForm.controls['confirmPassword'].touched && !loginForm.controls['password'].valid
             ">
                 <small *ngIf="formControls['confirmPassword'].errors?.['required']">
                     this field is required
                 </small>
-                <small *ngIf="formControls['confirmPassword'].errors?.['minLength']">
-                    the min length must be 8
-                </small>
                 <small *ngIf="formControls['confirmPassword'].errors?.['pattern']">
                     this field is not mactch the password format
                 </small>
+                <small *ngIf="formControls['confirmPassword'].errors?.['minLength']">
+                    the min length must be 8
+                </small>
+                <small *ngIf="formControls['password'].errors?.['confirmedValidator']">
+                    Password and Confirm Password must be match.
+                </small>
             </div>
         </div>
-        <button [disabled]="loginForm.invalid && !(conPass.value===pass.value)" type="submit" class="btn btn-primary bg-success fw-bold">Submit</button>
+        <button class="btn btn-primary">Add Adderss</button>
+        <div class="row justify-content-between">
+            <h3 class="col-1">Address</h3>
+            <button class="btn btn-danger col-3 col-md-2 col-lg-1">Remove</button>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-6">
+                <label for="add" class="form-label">Address</label>
+                <input type="text" class="form-control" id="add">
+            </div>
+            <div class="col-md-6">
+                <label for="street" class="form-label">Street</label>
+                <input type="text" class="form-control" id="street">
+            </div>
+            <div class="col-md-6">
+                <label for="country" class="form-label">Country</label>
+                <input type="text" class="form-control" id="country">
+            </div>
+            <div class="col-md-6">
+                <label for="city" class="form-label">City</label>
+                <select id="city" class="form-select">
+                    <option selected>Choose...</option>
+                    <option>AlQosya</option>
+                    <option>Assiut</option>
+                    <option>Dayroud</option>
+                    <option>Manfloud</option>
+                    <option>Badary</option>
+                    <option>Abo Teag</option>
+
+                </select>
+            </div>
+
+        </div>
+
+        <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary bg-success fw-bold">Submit</button>
     </form>
 </div>
