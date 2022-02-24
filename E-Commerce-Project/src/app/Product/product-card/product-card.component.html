@@ -1,4 +1,4 @@
-<div class="card">
+<!-- <div class="card">
     <img src="{{product.image}}" class="card-img-top" alt="...">
     <div class="card-body text-center">
         <h5 class="card-title text-secondary fw-bold">{{product.category}}</h5>
@@ -9,4 +9,23 @@
         <p class="card-text text-success"[ngClass]="{'text-danger': product.rating.count === 0}" >{{product.rating.count|check}}</p>
         <a href="#" class="btn btn-primary">Add to cart</a>
     </div>
-</div>
+</div> -->
+
+<mat-card  class="example-card ">
+    <mat-card-header>
+      <mat-card-title class="text-secondary text-center fw-bold">{{product.category}}</mat-card-title>
+      <mat-card-subtitle class="text-primary text-center">{{product.title}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{product.image}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        {{product.description}}
+      </p>
+      <p>{{product.price|currency:'EGP'}}</p>
+      <p class="text-warning text-center">{{product.rating.rate}}</p>
+      <p class="text-success text-center"[ngClass]="{'text-danger': product.rating.count === 0}">{{product.rating.count|check}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="navigateToProductDetails()" color="primary">Add to cart</button>
+    </mat-card-actions>
+  </mat-card>
