@@ -25,11 +25,15 @@
                 <input type="password" class="form-control" id="exampleInputPassword1"
                 required
                 ngModel
+                minlength="8"
                 name="pass"
                 #pass="ngModel"/>
                 <div class="text-danger" *ngIf="pass.touched && !pass.valid">
                     <small *ngIf="pass.hasError('required')">
                       this field is required
+                    </small>
+                    <small *ngIf="pass.hasError('minlength')">
+                      this field is must be 8 or more characters
                     </small>
                   </div>
             </div>
