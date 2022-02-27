@@ -33,6 +33,13 @@ export class RegisterComponent implements OnInit {
   submitloginForm() {
     console.log(this.loginForm);
   }
+  // canExit() : boolean {
+ 
+  //   if (confirm("Do you want to Leave Registration Page !!??")) {
+  //       return true;
+  //     }
+  //       return false;
+  //   }
   ngOnInit(): void {
   }
 
