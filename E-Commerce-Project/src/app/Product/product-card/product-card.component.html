@@ -16,16 +16,16 @@
       <mat-card-title class="text-secondary text-center fw-bold">{{product.category}}</mat-card-title>
       <mat-card-subtitle class="text-primary text-center">{{product.title}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image src="{{product.image}}" alt="Photo of a Shiba Inu">
+    <img mat-card-image (click)="navigateToProductDetails()" src="{{product.image}}" alt="Photo of a Shiba Inu">
     <mat-card-content>
-      <p>
+      <!-- <p>
         {{product.description}}
-      </p>
+      </p> -->
       <p>{{product.price|currency:'EGP'}}</p>
-      <p class="text-warning text-center">{{product.rating.rate}}</p>
-      <p class="text-success text-center"[ngClass]="{'text-danger': product.rating.count === 0}">{{product.rating.count|check}}</p>
+      <!-- <p class="text-warning text-center">{{product.rating.rate}}</p> -->
+      <!-- <p class="text-success text-center"[ngClass]="{'text-danger': product.rating.count === 0}">{{product.rating.count|check}}</p> -->
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button (click)="navigateToProductDetails()" color="primary">Add to cart</button>
+      <button mat-raised-button (click)="increaseCounterCart()" color="primary">Add to cart</button>
     </mat-card-actions>
   </mat-card>

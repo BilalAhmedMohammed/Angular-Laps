@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { CounterService } from '../services/counter.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  counter :Observable<number>=of(0);
+  constructor(private CounterService : CounterService) { }
 
   ngOnInit(): void {
+   this.counter= this.CounterService.getCounterValue();
   }
 
 }

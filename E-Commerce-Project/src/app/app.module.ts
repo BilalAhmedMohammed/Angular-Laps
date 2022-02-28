@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
-
+import {HttpClientModule} from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFounPageComponent } from './not-foun-page/not-foun-page.component';
 import { ProductDetailsComponent } from './Product/product-details/product-details.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ProductDetailsComponent } from './Product/product-details/product-detai
     LoginComponent,
     RegisterComponent,
     NotFounPageComponent,
-    ProductDetailsComponent],
+    ProductDetailsComponent,
+    CartComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,7 +37,8 @@ import { ProductDetailsComponent } from './Product/product-details/product-detai
     ReactiveFormsModule,
     MatCardModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
