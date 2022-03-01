@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CounterService } from '../services/counter.service';
 import { IProduct } from '../interfaces/iproduct'
-import { Observable } from 'rxjs';
-import { of } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -11,14 +9,17 @@ import { of } from 'rxjs';
 })
 export class CartComponent implements OnInit {
   productList: any = [];
-  counter: Observable<number> = of(0);
-  constructor(private counterService: CounterService) {
-    console.log('constructor');
-  }
+  total:number=0;
+  counter:number=0;
+  constructor(private counterService: CounterService) { }
   ngOnInit(): void {
-    console.log('On init');
     this.productList = this.counterService.getProducts();
-    this.counter = this.counterService.getCounterValue();
+    this.counterService.getCounterValue().subscribe(
+      (val)=>{this.counter=val}
+    );
+    this.counterService.calculateTotalPrice().subscribe(
+      (val)=>{this.total=val}
+    )
   }
   increase(quantity: any) {
     const inc: number = parseInt(quantity.value);
@@ -26,12 +27,16 @@ export class CartComponent implements OnInit {
   }
   decrease(quantity: any) {
     const dec: number = parseInt(quantity.value);
-    if (quantity.value > 0) {
+    if (quantity.value > 1) {
       quantity.value = dec - 1;
     }
   }
   removeThisElement(elem: IProduct) {
     this.productList = this.counterService.clearSpecificProduct(elem);
+    this.counterService.setCounterValue(--this.counter);
+    this.counterService.calculateTotalPrice().subscribe(
+      (val)=>{this.total=val}
+    )
   }
 
 }

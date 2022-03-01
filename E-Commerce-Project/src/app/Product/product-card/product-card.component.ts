@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CounterService } from 'src/app/services/counter.service';
 
@@ -8,21 +8,25 @@ import { CounterService } from 'src/app/services/counter.service';
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent implements OnInit {
-  @Input() product:any;
-  constructor(private router:Router,private counterService:CounterService) {
-   }
-  counter=0;
+  @Input() product: any;
+  constructor(private router: Router, private counterService: CounterService) {
+  }
+  counter = 0;
   ngOnInit(): void {
     this.counterService.getCounterValue().subscribe(
-      (val) => {this.counter = val}
+      (val) => { this.counter = val }
     );
   }
   navigateToProductDetails() {
-    this.router.navigate(['' , this.product.id])
+    this.router.navigate(['', this.product.id])
   }
-  increaseCounterCart(){
-    this.counterService.setCounterValue(++this.counter);
-    this.counterService.addToCart(this.product);
+  increaseCounterCart() {
+    const check = this.counterService.addToCart(this.product);
+    if (check) {
+      this.counterService.setCounterValue(++this.counter);
+      return;
+    }
+    alert ("This Item Already Exist In Your Cart");
   }
 
 }
