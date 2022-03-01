@@ -17,7 +17,7 @@
         <td class="text-dark"><img [src]="product.image" style="width: 150px;height: 150px;" class="img-fluid" alt=""></td>
         <td class="text-dark">{{product.title}}</td>
         <td class="text-dark">{{product.price | currency:'EGP'}}</td>
-        <td class="text-dark text-white"><input type="button" class="text-white" (click)="increase(quantity)" value="+"><input class="mx-4 text-white" style="width: 40px;" type="text" value="1" #quantity disabled><input (click)="decrease(quantity)" type="button" value="-" class=" text-white"></td>
+        <td class="text-dark text-white"><input type="button" class="text-white" (click)="increase(quantity,product.id)" value="+"><input class="mx-4 text-white" style="width: 40px;" type="text" value="1" #quantity disabled><input (click)="decrease(quantity,product.id)" type="button" value="-" class=" text-white"></td>
         <td class="text-dark"><button class="btn btn-dark text-white" (click)="removeThisElement(product) ">remove</button></td>
       </tr>
     </table>
