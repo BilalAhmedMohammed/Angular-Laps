@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import {IProduct} from '../interfaces/iproduct'
+import {IProduct} from '../interfaces/iproduct';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +9,13 @@ export class CounterService {
   private counter = new BehaviorSubject(0);
   private totalPrice=new BehaviorSubject(0);
   private products:IProduct[]=[];
+  // private objectsQuantity:object[]=[];
   addToCart(product:IProduct){
     if (!this.products.includes(product))
     {
         this.products.push(product);
+        // this.objectsQuantity.push({"id":product.id,quantity:1});
+        // console.log(this.objectsQuantity);
         return true;
     }
     return false;

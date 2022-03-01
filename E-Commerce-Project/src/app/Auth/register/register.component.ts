@@ -4,7 +4,7 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
-import { ConfirmedValidator } from '../confirmed.validator';
+import { ConfirmedValidator } from '../../confirmed.validator';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
